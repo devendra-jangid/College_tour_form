@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Form</title>
+</head>
+
+<body>
+    <Header>
+        <nav>
+            <ul>
+                <li><a href="https://pornhub.org">Home</a></li>
+                <li><a href="#">Academics</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </Header>
+    <main>
+        <div class="container" id="Form section">
+
+            <form action="form.js">
+                <h1>Personal details</h1>
+                <div><label for="personal details">
+                        <p><b>Enter your name:</b></p>
+                        <input type="text" name="name" id="personal details" placeholder="Enter your Name " required>
+                        <P><B>Father Name</B></P>
+                        <input type="text" name="father name" id="personal details" placeholder="Father Name" required>
+                        <p><b>Mother Name</b></p>
+                        <input type="text" name="mother name" id="personal details" placeholder="Mother Name " required>
+                        <p><b>College Id :</b></p>
+                        <input type="text" name="college id" id="personal details" placeholder="Enter ID:  " required>
+                    </label></div>
+                <h1>Contact details</h1>
+                <label for="contact">
+                    <p><b>Mobile No. :</b></p>
+                    <input type="text" name="Mobile No" id="contact" placeholder="Enter Mobile Number" required>
+                    <p><b>Email:</b></p>
+                    <input type="email" name="email" id="contact" placeholder="Enter registered email" required>
+                    <p><b>Address </b></p>
+                    <input type="text" name="address" id="contact" placeholder="Enter registered address" required>
+                    <div>
+                </label>
+                <h1>Other information</h1>
+                <label for="other information">
+                    <div>
+                        <p><b>Batch :</b></p>
+                        <input type="text" name="batch" id="other information" placeholder="Enter Batch" required>
+                        <div>
+                            <p><b>Course</b></p>
+                        </div>
+                        <select name="course" id="other information">
+                            <option value="No-course">Select your course</option>
+                            <option value="B.tech">B.tech</option>
+                            <option value="B.arch">B.arch</option>
+                            <option value="MBA">MBA</option>
+
+                        </select>
+                    </div>
+                    <div>
+                        <p><b>Session</b></p>
+                        <select name="Session" id="other information">
+                            <option value="No-Session">Select your Session</option>
+                            <option value="2023-2024"> 2023-2024</option>
+                            <option value="2022-2023">2022-2023</option>
+                            <option value="2021-2022">2021-2022</option>
+
+                        </select>
+                    </div>
+
+                    <div><input type="checkbox" name="Include food" id="other information"> Include food <br>
+                        <p><b>In which month do you want to go?</b></p>
+                        <input type="radio" value="september" name="month" id="other information">September
+                        <input type="radio" value="october" name="month" id="other information">October
+                        <input type="radio" value="november" name="month" id="other information">November
+                        <p><b>Want to add friends? (maximum 3)</b></p>
+                        <select name="member" id="memberCount">
+                            <option value="No-member">Select</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+
+                    <div id="memberInputs">
+                        <!-- Member input boxes will be displayed here -->
+                    </div>
+
+                    <script>
+                        const memberCountSelect = document.getElementById('memberCount');
+                        const memberInputsDiv = document.getElementById('memberInputs');
+
+                        memberCountSelect.addEventListener('change', function () {
+                            // Clear existing input boxes
+                            memberInputsDiv.innerHTML = '';
+
+                            const selectedCount = parseInt(memberCountSelect.value);
+
+                            for (let i = 1; i <= selectedCount; i++) {
+                                const label = document.createElement('label');
+                                label.textContent = `Enter Friend Name ${i}: `;
+                                const input = document.createElement('input');
+                                input.type = 'text';
+                                input.name = `friendName${i}`;
+
+                                memberInputsDiv.appendChild(label);
+                                memberInputsDiv.appendChild(input);
+                                memberInputsDiv.appendChild(document.createElement('br'));
+                            }
+                        });
+                    </script>
+
+                    </select>
+        </div>
+        </p>
+        </div>
+
+        </label></div>
+        <div><textarea name="suggestion" id="suggestion" cols="30" rows="10"
+                placeholder="Any suggestion that can help to make his trip awesome?"></textarea></div>
+
+        </form>
+
+        </div>
+        <button type="submit" id="back">Go back </button>
+        <button id="gotogateway" onclick="prepareSummary()">Go to payment gateway</button>
+
+        <script>
+            document.getElementById('back').addEventListener('click', function () {
+
+
+
+                // Redirect to welcome.html
+                window.location.href = 'welcome.html';
+            });
+            function prepareSummary() {
+                // Get the user's input data from the form
+                const name = document.querySelector('input[name="name"]').value;
+                const numMembers = parseInt(document.querySelector('select[name="member"]').value);
+                const section = document.querySelector('select[name="course"]').value;
+                const batch = document.querySelector('input[name="batch"]').value;
+
+                // Create an array to store member names
+                const memberNames = [];
+
+                // Loop through the input boxes for member names and add them to the array
+                for (let i = 1; i <= numMembers; i++) {
+                    const memberName = document.querySelector(`input[name="friendName${i}"]`).value;
+                    memberNames.push(memberName);
+                }
+
+                // Convert the array of member names to a comma-separated string
+                const memberNamesString = memberNames.join(', ');
+
+                // Redirect to the payment gateway page with query parameters
+                const queryString = `?name=${encodeURIComponent(name)}&numMembers=${numMembers}&section=${encodeURIComponent(section)}&batch=${encodeURIComponent(batch)}&members=${encodeURIComponent(memberNamesString)}`;
+                window.location.href = `pg.html${queryString}`;
+            }
+        </script>
+
+
+        <footer>© Copyrigth 2023 . All Rights Reserved </footer>
+</body>
+</body>
+
+</html>

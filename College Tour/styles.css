@@ -1,0 +1,104 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 0px;
+  background-image: url('bg.jpg');
+  background-size: cover; /* Use 'contain' or 'cover' as per your preference */
+  background-repeat: no-repeat; /* Prevent image repetition */
+   /* Center the image horizontally and vertically */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+main {
+  flex-grow: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */;
+}
+
+#tour-details-section {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+ background-color:darkgoldenrod ;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  
+}
+.btn:hover{
+  background-color:darkgray ;
+}
+
+#show-details-btn {  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  
+}
+#show-details-btn:hover{
+ background-color: #555;
+}
+
+#welcome-section h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#welcome-section p {
+  font-size: 18px;
+  color: #555;
+}
+
+footer {
+  background-color:transparent;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}

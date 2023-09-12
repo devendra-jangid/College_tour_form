@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Welcome to College Tour</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Academics</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="welcome-section">
+            <h1>Welcome to Our College Tour</h1>
+            <p>Get ready for an exciting journey to Manali and Chandigarh!</p>
+            <button id="show-details-btn">Show Tour Details</button>
+            
+        </section>
+
+        <section id="tour-details-section" style="display: none;">
+            <h2>Tour Details</h2>
+            <p>Explore the beautiful landscapes of Manali and the vibrant city of Chandigarh on our college tour.
+                As mentioned earlier our college is conducting a Trip o r you can say Tour to Chandigarh and Manali.
+                The Cost per student is INR 4000.Those who want to add your family member note that there is a charge of Rs.500 per person and trip Cost INR 4000 i.e, if you add member then you have to pay INR 4500 per person and only 3 member can be added.
+
+                if you have another query feel free to contact us .To fill the form please click on the button.
+            </p>
+            <a href="form.html" class="btn" >Fill Form</a>
+            <!-- Add more tour details here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Copyright 2023 . All rights reserved.</p>
+    </footer>
+
+    <script>
+        const detailsSection = document.getElementById('tour-details-section');
+        const showDetailsBtn = document.getElementById('show-details-btn');
+    
+        showDetailsBtn.addEventListener('click', function () {
+            if (detailsSection.style.display === 'none' || detailsSection.style.display === '') {
+                detailsSection.style.display = 'block';
+                showDetailsBtn.textContent = 'Hide Tour Details';
+            } else {
+                detailsSection.style.display = 'none';
+                showDetailsBtn.textContent = 'Show Tour Details';
+            }
+        });
+    </script>
+    
+</body>
+</html>

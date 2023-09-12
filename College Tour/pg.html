@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Payment Gate way</title>
+    <link rel="stylesheet" href="pg.css">
+
+</head>
+
+<body>
+    <!-- ... Other HTML code ... -->
+    <div class="container">
+        <h1>Form Details</h1>
+        <!-- Summary Section -->
+        <div id="summary">
+            <p><strong>Name:</strong> <span id="name"></span></p>
+            <p><strong>Number of Members:</strong> <span id="numMembers"></span></p>
+            <p><strong>Section:</strong> <span id="section"></span></p>
+            <p><strong>Batch:</strong> <span id="batch"></span></p>
+            <p><strong>Total Amount (INR):</strong> <span id="totalAmount"></span></p>
+        </div>
+
+
+
+        <!-- ... Other HTML code ... -->
+
+        <div class="container">
+            <h1>Aditya's Sponsered Collge Tour Payment</h1>
+            <form action="form.js" method="POST">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+
+
+                <label for="payment_method">Payment Method:</label>
+                <select id="payment_method" name="payment_method" required>
+
+                    <option value="no-payment_,ethod">select payment method</option>
+                    <option value="credit_card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="bank_transfer">Bank Transfer</option>
+                    <option value="UPI">UPI</option>
+                </select>
+
+                <button type="submit">Pay Now</button>
+                <button type="submit" id="cancelButton">Cancel Payment</button>
+        </div>
+        <script>
+            document.getElementById('cancelButton').addEventListener('click', function () {
+                // Display a confirmation message
+                alert('Payment Cancelled Successfully');
+
+                // Redirect to welcome.html
+                window.location.href = 'welcome.html';
+            });
+            // Get query parameters from the URL
+            const queryParams = new URLSearchParams(window.location.search);
+
+            // Extract the data from the query parameters
+            const name = queryParams.get('name');
+            const numMembers = parseInt(queryParams.get('numMembers'));
+            const section = queryParams.get('section');
+            const batch = queryParams.get('batch');
+
+            const baseAmountPerStudent = 4000;
+            const additionalMemberFee = 4500;
+
+            // Calculate the total amount
+            const totalAmount = baseAmountPerStudent + (numMembers * additionalMemberFee);
+
+            // Populate the summary section with the extracted data
+            document.getElementById('name').textContent = name;
+            document.getElementById('numMembers').textContent = numMembers;
+            document.getElementById('section').textContent = section;
+            document.getElementById('batch').textContent = batch;
+            document.getElementById('totalAmount').textContent = totalAmount;
+
+            // Handle the Cancel Payment button
+            document.getElementById('cancelButton').addEventListener('click', function () {
+                // Display a confirmation message
+                alert('Payment Cancelled Successfully');
+
+                // Redirect to welcome.html
+                window.location.href = 'welcome.html';
+            });
+
+        </script>
+
+        </form>
+    </div>
+</body>
+
+</html>
